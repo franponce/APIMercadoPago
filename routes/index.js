@@ -5,17 +5,19 @@ const PaymentController = require("../Controllers/PaymentsController");
 const PaymentsService = require("../Services/PaymentsService");
 const PaymentInstance = new PaymentController(new PaymentsService());
 
-/* GET home page. */
-router.get('/', function(req, res, next) {
-  res.render('index', { title: 'Express' });
+router.get("/", function (req, res, next) {
+  return res.json({
+    "/payment": "generates a payment link",
+    "/subscription": "generates a subscription link"
+  });
 });
 
 router.get('/payment', function(req, res, next) {
-  PaymentInstance.createPayment(req, res);
+  PaymentInstance.getPaymentLink(req, res);
 });
 
 router.get('/subscription', function(req, res, next) {
-  PaymentInstance.createSubscription(req, res);
+  PaymentInstance.getSubscriptionLink(req, res);
 });
 
 module.exports = router;
