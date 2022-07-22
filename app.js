@@ -1,11 +1,14 @@
-var express = require('express');
-var path = require('path');
-var cookieParser = require('cookie-parser');
-var logger = require('morgan');
+const express = require('express');
+const path = require('path');
+const cookieParser = require('cookie-parser');
+const logger = require('morgan');
+const dotenv = require("dotenv")
 
 var indexRouter = require('./routes/index');
 
 var app = express();
+
+dotenv.config();
 
 app.use(logger('dev'));
 app.use(express.json());
